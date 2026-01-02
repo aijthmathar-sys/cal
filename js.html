@@ -13,8 +13,10 @@
          <button type="button" onclick="getdata()">get data</button>
     </form>
     <script>
+        
         let currentindex=0;
         async function getdata(){
+            try{
             const response= await fetch("https://api.restful-api.dev/objects")
             const data= await response.json();
             console.log(data);
@@ -23,7 +25,13 @@
             document.getElementById("email").value=first.email;
             document.getElementById("city").value=first.city;
             currentindex++;
+        } catch(error){
+            console.log(error)
+        }finally{
+            console.log("completed")
         }
+    }
+        
     </script>
 </body>
 </html>
